@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap');
+
+body {
+    font-family: 'Noto Naskh Arabic';
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Disable side scroll */
+    background-image: url('k3.jpg');
+    position: relative;
+}
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Adjust opacity as needed */
+  z-index: -1; /* Ensure overlay is behind the content */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+html {
+    overflow-x: hidden; /* Disable side scroll */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Keeps the default text color */
+}
+main {
+    flex: 1; /* Allow main content to grow and fill remaining space */
+}
+/* Optionally style links on hover or other states */
+.circle {
+    --circle-size: 40px;
+    position: fixed;
+    height: var(--circle-size);
+    width: var(--circle-size);
+    border: 1px solid black;
+    border-radius: 100%;
+    top: calc(var(--circle-size) / 2 * -1);
+    left: calc(var(--circle-size) / 2 * -1);
+    pointer-events: none;
+    z-index: 9999;
+  }
+header {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.slogan {
+    position: absolute; /* Allows custom positioning */
+    left: 51.2%; /* Centers horizontally */
+    top: 4%; /* Centers vertically */
+    transform: translate(-50%, -50%); /* Centers accurately */
+    color: black;
+    transition: ease-in-out 0.9s;
+}
+
+.slogan h1 {
+    margin: 0;
+    overflow: hidden; /* Ensure the text doesn't overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    direction: rtl; /* Set text direction to right-to-left */
+    animation: typewriter-reverse 3s steps(50, end) forwards; /* Adjust duration and steps as needed */
+}
+
+@keyframes typewriter-reverse {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+ nav ul {
+    padding: 0;
+    margin: 5;
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    font-size: 1.4rem;
+    isolation: isolate;
+  }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
+    line-height: 1.5;
+  }
+nav ul:before {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    position-anchor: --li;
+    background: red;
+    height: .2em;
+    inset: auto anchor(right) anchor(bottom) anchor(left);
+    transition: .2s .2s;
+  }
+nav  ul li {
+    position: relative;
+  }
+nav  ul li:before {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    inset: 100% -.15em 0;
+    background: red;
+    transition: .2s;
+  }
+nav ul li:is(:hover,.active):before {
+    anchor-name: --li;
+    
+    transition: .2s .4s;
+  }
+nav ul:has(li:hover) li.active:not(:hover):before {
+    anchor-name: none;
+    inset: 100% -.15em 0;
+    transition: .2s;
+  }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust this margin to control the distance between navigation and buttons */
+}
+@media all and (max-width: 500px) {
+    body,
+    html {
+        overflow-x: hidden; /* Disable side scroll */
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo img {
+        align-items: center;
+        position: relative;
+        left: 35%; /* Centers horizontally */
+        top: 8%; /* Centers vertically */
+    }
+
+    .slogan {
+        align-items: center;
+        position: relative;
+        transform: none;
+        left: 5%; /* Centers horizontally */
+        top: 8%;
+        font-size: 0.2rem; /* Centers vertically */
+    }
+    .slogan h1{
+       font-size: 1.5rem;
+    }
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.intro {
+    background: #f0f0f0;
+    padding: 100px 0;
+    border-radius: 40px;
+    width : 30%;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  
+  /* TIMELINE
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .timeline ul {
+    background: #456990;
+    padding: 50px 0;
+  }
+  
+  .timeline ul li {
+    list-style-type: none;
+    position: relative;
+    width: 6px;
+    margin: 0 auto;
+    padding-top: 50px;
+    background: #f0f0f0;
+  }
+  
+  .timeline ul li::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: inherit;
+    z-index: 1;
+  }
+  
+  .timeline ul li div {
+    position: relative;
+    bottom: 0;
+    width: 400px;
+    padding: 15px;
+    border-radius: 30px;
+    background: #f0f0f0;
+  }
+  
+  .timeline ul li div::before {
+    content: "";
+    position: absolute;
+    bottom: 7px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  
+  .timeline ul li:nth-child(odd) div {
+    left: 45px;
+  }
+  
+  .timeline ul li:nth-child(odd) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent red transparent transparent;
+  }
+  
+  .timeline ul li:nth-child(even) div {
+    left: -439px;
+  }
+  
+  .timeline ul li:nth-child(even) div::before {
+    right: -15px;
+    border-width: 8px 0 8px 16px;
+    border-color: transparent transparent transparent red;
+  }
+  
+  time {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  
+  /* EFFECTS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .timeline ul li::after {
+    transition: background 0.5s ease-in-out;
+  }
+  
+  .timeline ul li.in-view::after {
+    background: red;
+  }
+  
+  .timeline ul li div {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .timeline ul li:nth-child(odd) div {
+    transform: translate3d(200px, 0, 0);
+  }
+  
+  .timeline ul li:nth-child(even) div {
+    transform: translate3d(-200px, 0, 0);
+  }
+  
+  .timeline ul li.in-view div {
+    transform: none;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  
+  /* GENERAL MEDIA QUERIES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  @media (max-width: 768px) {
+    .intro {
+      width: 50%;
+      height :-10%;
+    }
+    .timeline ul {
+        padding: 30px 0;
+        border-radius:20px; /* Reduce padding */
+    }
+    .timeline ul li.in-view::after {
+      display: none; /* Hide the ::after pseudo-element when in view */
+  }
+  
+  .timeline ul li:nth-child(even) div::before {
+      display: none; /* Hide the ::before pseudo-element for even child items */
+  }
+  .timeline ul li:nth-child(odd) div::before {
+    display: none; /* Hide the ::before pseudo-element for odd child items */
+}
+  
+    .timeline ul li {
+        width: 90%; /* Adjust width */
+        max-width: 90%; /* Limit maximum width */
+        margin: 0 auto;
+        padding-top: 30px; /* Reduce padding */
+    }
+
+    .timeline ul li div {
+        width: 90%; /* Adjust width */
+        max-width: 90%; /* Limit maximum width */
+        padding: 15px;
+    }
+
+    .timeline ul li:nth-child(odd) div,
+    .timeline ul li:nth-child(even) div {
+        left: 0; /* Center divs */
+    }
+}
+
+  
+
+  
+  
+  /* EXTRA/CLIP PATH STYLES
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .timeline-clippy ul li::after {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+  }
+  
+  .timeline-rhombus ul li::after {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+  
+  .timeline-rhombus ul li div::before {
+    bottom: 12px;
+  }
+  
+  .timeline-star ul li::after {
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+  
+  .timeline-heptagon ul li::after {
+    clip-path: polygon(
+      50% 0%,
+      90% 20%,
+      100% 60%,
+      75% 100%,
+      25% 100%,
+      0% 60%,
+      10% 20%
+    );
+  }
+  
+  .timeline-infinite ul li::after {
+    animation: scaleAnimation 2s infinite;
+  }
+  
+  @keyframes scaleAnimation {
+    0% {
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      transform: translateX(-50%) scale(1.25);
+    }
+    100% {
+      transform: translateX(-50%) scale(1);
+    }
+  }
+  
+  
+  footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+footer .icons i {
+    font-size: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    footer p {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+/* Styles for "X" when sidebar is active */
+#sidebar.active .toggle-btn span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 2px);
+}
+
+#sidebar.active .toggle-btn span:nth-child(2) {
+  transform: rotate(-45deg) translate(5px, -2px);
+}
+
+#sidebar.active .toggle-btn span:nth-child(3) {
+  display: none;
+}
+.toggle-btn {
+  position: absolute;
+  top: 30px;
+  right: 20px; /* Adjust as needed */
+  cursor: pointer;
+  z-index: 101; /* Ensure it's above sidebar */
+}
+
+.toggle-btn span {
+  display: block;
+  width: 30px; /* Adjust thickness of lines */
+  height: 3px; /* Adjust height of lines */
+  background-color: #fff; /* Color of the lines */
+  margin-bottom: 5px; /* Spacing between lines */
+  transition: transform 0.3s;
+}
+#sidebar {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background: #000;
+  right: -300px;
+  transition: .4s;
+  z-index: 100;
+}
+
+#sidebar ul li {
+  list-style: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 26px 24px;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  top: 30px;
+  right: 330px;
+}
+
+.toggle-btn span {
+  width: 45px;
+  height: 4px;
+  background: #000;
+  display: block;
+  margin-top: 4px;
+}
+
+#sidebar.active {
+  right: 0;
+}
+@media (min-width: 501px) {
+  #sidebar {
+      display: none; /* Hide the sidebar on larger screens */
+  }
+}
+
+@media all and (max-width: 500px) {
+  nav {
+      display: none;
+  }
+}

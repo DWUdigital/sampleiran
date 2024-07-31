@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap');
+
+body {
+    font-family: 'Noto Naskh Arabic';
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Disable side scroll */
+    background-image: url('k3.jpg');
+    position: relative;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Adjust opacity as needed */
+    z-index: -1; /* Ensure overlay is behind the content */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+html {
+    overflow-x: hidden; /* Disable side scroll */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Keeps the default text color */
+}
+main {
+    flex: 1; /* Allow main content to grow and fill remaining space */
+}
+/* Optionally style links on hover or other states */
+.circle {
+    --circle-size: 40px;
+    position: fixed;
+    height: var(--circle-size);
+    width: var(--circle-size);
+    border: 1px solid white;
+    border-radius: 100%;
+    top: calc(var(--circle-size) / 2 * -1);
+    left: calc(var(--circle-size) / 2 * -1);
+    pointer-events: none;
+    z-index: 9999;
+  }
+header {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.slogan {
+    position: absolute; /* Allows custom positioning */
+    left: 51.2%; /* Centers horizontally */
+    top: 3%; /* Centers vertically */
+    transform: translate(-50%, -50%); /* Centers accurately */
+    color: black;
+    transition: ease-in-out 0.9s;
+}
+
+.slogan h1 {
+    margin: 0;
+    overflow: hidden; /* Ensure the text doesn't overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    direction: rtl; /* Set text direction to right-to-left */
+    animation: typewriter-reverse 3s steps(50, end) forwards; /* Adjust duration and steps as needed */
+}
+
+@keyframes typewriter-reverse {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+ nav ul {
+    padding: 0;
+    margin: 5;
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    font-size: 1.4rem;
+    isolation: isolate;
+  }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
+    line-height: 1.5;
+  }
+nav ul:before {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    position-anchor: --li;
+    background: red;
+    height: .2em;
+    inset: auto anchor(right) anchor(bottom) anchor(left);
+    transition: .2s .2s;
+  }
+nav  ul li {
+    position: relative;
+  }
+nav  ul li:before {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    inset: 100% -.15em 0;
+    background: red;
+    transition: .2s;
+  }
+nav ul li:is(:hover,.active):before {
+    anchor-name: --li;
+   
+    transition: .2s .4s;
+  }
+nav ul:has(li:hover) li.active:not(:hover):before {
+    anchor-name: none;
+    inset: 100% -.15em 0;
+    transition: .2s;
+  }
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Adjust this margin to control the distance between navigation and buttons */
+}
+/* Common styles for both cards */
+.card {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Styles for rectangle card */
+.rectangle-card {
+    position: relative;
+    background-image: url('2.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    width: 1300px;
+    height: 400px; /* Adjust height as needed */
+    max-width: none; /* Disable max-width to ensure full width */
+    border-radius: 50px; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.rectangle-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+    box-shadow: 0 8px 16px orange; /* Add a stronger shadow */
+}
+
+.rectangle-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px; /* Rounded corners */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rectangle-card:hover .overlay {
+    opacity: 1;
+}
+
+
+.rectangle-card .card-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styles for round card */
+.round-card {
+    position: relative;
+    background-image: url('1.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    border-radius: 50%; /* Circular shape */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.round-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly on hover */
+    box-shadow: 0 8px 16px orange; /* Add a stronger shadow */
+}
+
+.round-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Circular shape */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.round-card:hover .overlay {
+    opacity: 1;
+}
+
+.round-card .card-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+    .rectangle-card {
+        height: 300px;
+        width:350px; /* Adjust height for smaller screens */
+    }
+
+    .round-card {
+        width: 150px; /* Adjust width for smaller screens */
+        height: 150px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .rectangle-card {
+        height: 250px; /* Further adjust height for smallest screens */
+    }
+
+    .round-card {
+        width: 120px; /* Further adjust width for smallest screens */
+        height: 120px; /* Further adjust height for smallest screens */
+    }
+}
+
+
+
+.toggle-btn {
+    position: absolute;
+    top: 30px;
+    right: 20px; /* Adjust as needed */
+    cursor: pointer;
+    z-index: 101; /* Ensure it's above sidebar */
+}
+
+.toggle-btn span {
+    display: block;
+    width: 30px; /* Adjust thickness of lines */
+    height: 3px; /* Adjust height of lines */
+    background-color: #fff; /* Color of the lines */
+    margin-bottom: 5px; /* Spacing between lines */
+    transition: transform 0.3s;
+}
+
+/* Styles for "X" when sidebar is active */
+#sidebar.active .toggle-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 2px);
+}
+
+#sidebar.active .toggle-btn span:nth-child(2) {
+    transform: rotate(-45deg) translate(5px, -2px);
+}
+
+#sidebar.active .toggle-btn span:nth-child(3) {
+    display: none;
+}
+#sidebar {
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    background: #000;
+    right: -300px;
+    transition: .4s;
+    z-index: 100;
+  }
+
+  #sidebar ul li {
+    list-style: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 26px 24px;
+  }
+
+  #sidebar .toggle-btn {
+    position: absolute;
+    top: 30px;
+    right: 330px;
+  }
+
+  .toggle-btn span {
+    width: 45px;
+    height: 4px;
+    background: #000;
+    display: block;
+    margin-top: 4px;
+  }
+
+  #sidebar.active {
+    right: 0;
+  }
+
+@media all and (max-width: 500px) {
+    body {
+        overflow-x: hidden;
+    }
+    html {
+        overflow-x: hidden;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo img {
+        align-items: center;
+        position: relative;
+        left: 35%; /* Centers horizontally */
+        top: 8%; /* Centers vertically */
+        
+    }
+    p {
+        font-size: 1.0rem;
+    }
+    .slogan {
+        align-items: center;
+        position: relative;
+        transform: none;
+        left: 10%; /* Centers horizontally */
+        top: 8%;
+        font-size:0.6rem; /* Centers vertically */
+    }
+    nav {
+        display: none;
+    }
+   
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    
+}
+@media (min-width: 501px) {
+    #sidebar {
+        display: none; /* Hide the sidebar on larger screens */
+    }
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+footer .icons i {
+    font-size: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    footer p {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+/* Additional styles for reward section */
+.reward {
+    padding: 20px;
+    margin-top: 20px; /* Add margin to separate from cards-list */
+    margin-bottom: 20px; /* Adjust margin to prevent overlap with footer */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.reward h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.reward p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .reward {
+        padding: 10px;
+    }
+
+    .reward h2 {
+        font-size: 1.5rem;
+    }
+
+    .reward p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reward h2 {
+        font-size: 1.2rem;
+    }
+
+    .reward p {
+        font-size: 0.8rem;
+    }
+}
+
+.slider {
+    width: 30%; /* Adjust width as per your layout */
+    margin: 0 auto; /* Center align */
+  }
+  .slider img {
+    width: 100%; /* Make sure all images fill their containers */
+    height: 5%; /* Maintain aspect ratio */
+  }
+  .slider-title {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 0 0 10px orange;
+}

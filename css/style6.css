@@ -1,0 +1,366 @@
+/* Resetting default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Vazir&display=swap');
+
+body {
+    font-family: 'Noto Naskh Arabic';
+  margin: 0;
+  padding: 0;
+  background-color: black; /* Fallback background color */
+  background-image: url('back.jpg'); /* Replace with your image path */
+  background-size: cover; /* Cover the entire background */
+  background-position: center;
+  background-repeat: no-repeat; /* Center the background image */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden; /* Disable side scroll */
+  border: 1px solid black;
+  background-image: url('k7.jpg');
+    position: relative;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Adjust opacity as needed */
+    z-index: -1; /* Ensure overlay is behind the content */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+a {
+  text-decoration: none;
+  color: inherit; /* Keeps the default text color */
+}
+
+h2 {
+  color: white;
+}
+
+header {
+  width: 100%;
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  justify-content: space-between;
+}
+
+
+.logo img {
+  height: 80px; /* Adjust logo height */
+}
+
+nav ul {
+  padding: 0;
+  margin: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  font-size: 1.4rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 900;
+  line-height: 1.5;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 100% -0.15em 0;
+  background: red;
+  transition: 0.2s;
+}
+
+nav ul li:hover:before,
+nav ul li.active:before {
+  inset: 0 -0.15em 0;
+}
+
+.slogan {
+  position: absolute; /* Allows custom positioning */
+  left: 50%; /* Centers horizontally */
+  top: 7%; /* Centers vertically */
+  transform: translate(-50%, -50%); /* Centers accurately */
+  color: black;
+  transition: ease-in-out 0.9s;
+}
+
+.slogan h1 {
+  margin: 0;
+  overflow: hidden; /* Ensure the text doesn't overflow */
+  white-space: nowrap; /* Prevent wrapping */
+  direction: rtl; /* Set text direction to right-to-left */
+  animation: typewriter-reverse 3s steps(50, end) forwards;
+  color: black; /* Adjust duration and steps as needed */
+}
+
+@keyframes typewriter-reverse {
+  from {
+      width: 0;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+.circle {
+  --circle-size: 40px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 1px solid white;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* Adjust this margin to control the distance between header and buttons */
+}
+
+/* Main content styling */
+.main {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
+}
+
+.team {
+  padding: 20px;
+  text-align: center;
+}
+
+.team h2 {
+  margin-bottom: 20px;
+}
+
+.team-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 250px;
+  width: 400px; /* Adjust spacing between top and bottom rows */
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+  height :250px;
+  width: 100%; /* Adjust spacing between top and bottom rows */
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 5px; /* Adjust margin for spacing between cards */
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+   /* Adjust width as needed */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for box-shadow */
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px orange; /* Glow effect on hover */
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  width: 150px; /* Fixed width for all card images */
+  height: 150px; /* Fixed height for all card images */
+  border-radius: 50%;
+}
+
+
+.card .info {
+  margin-top: 10px;
+}
+
+.card .info h3 {
+  margin: 10px 0;
+  font-size: 16px; /* Adjust font size */
+}
+
+.card .info p {
+  color: #666;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .team-cards {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .card {
+      width: 40%;
+      height:95%; /* Adjust width for smaller screens */
+  }
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+footer p {
+  margin: 5px 0;
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+footer .icons i {
+  font-size: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  footer p {
+      display: block;
+      margin-bottom: 10px;
+  }
+}
+@media all and (max-width: 500px) {
+  body,
+  html {
+      overflow-x: hidden; /* Disable side scroll */
+  }
+
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .logo img {
+      align-items: center;
+      position: relative;
+      left: 35%; /* Centers horizontally */
+      top: 8%; /* Centers vertically */
+  }
+
+  .slogan {
+      align-items: center;
+      position: relative;
+      transform: none;
+      left:5%; /* Centers horizontally */
+      top: 8%;
+      font-size: 0.6rem; /* Centers vertically */
+  }
+
+  .buttons {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+/* Styles for "X" when sidebar is active */
+#sidebar.active .toggle-btn span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 2px);
+}
+
+#sidebar.active .toggle-btn span:nth-child(2) {
+  transform: rotate(-45deg) translate(5px, -2px);
+}
+
+#sidebar.active .toggle-btn span:nth-child(3) {
+  display: none;
+}
+.toggle-btn {
+  position: absolute;
+  top: 30px;
+  right: 20px; /* Adjust as needed */
+  cursor: pointer;
+  z-index: 101; /* Ensure it's above sidebar */
+}
+
+.toggle-btn span {
+  display: block;
+  width: 30px; /* Adjust thickness of lines */
+  height: 3px; /* Adjust height of lines */
+  background-color: #fff; /* Color of the lines */
+  margin-bottom: 5px; /* Spacing between lines */
+  transition: transform 0.3s;
+}
+#sidebar {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background: #000;
+  right: -300px;
+  transition: .4s;
+  z-index: 100;
+}
+
+#sidebar ul li {
+  list-style: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 26px 24px;
+}
+
+#sidebar .toggle-btn {
+  position: absolute;
+  top: 30px;
+  right: 330px;
+}
+
+.toggle-btn span {
+  width: 45px;
+  height: 4px;
+  background: #000;
+  display: block;
+  margin-top: 4px;
+}
+
+#sidebar.active {
+  right: 0;
+}
+@media (min-width: 501px) {
+  #sidebar {
+      display: none; /* Hide the sidebar on larger screens */
+  }
+}
+
+@media all and (max-width: 500px) {
+  nav {
+      display: none;
+  }
+}
